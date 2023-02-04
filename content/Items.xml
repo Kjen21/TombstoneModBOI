@@ -1,0 +1,3 @@
+<items gfxroot="gfx/items/" version="1">
+    <passive id="1" name="Tombstone" gfx="tombstone_item.png" description="Death won't hold you down!" quality="3" cache="damage color shotspeed" />
+</items>
