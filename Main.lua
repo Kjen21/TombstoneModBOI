@@ -1,32 +1,27 @@
-local isc = require("TombStone.lib.isaacscript-common")
+local isc = require("tombstone.lib.isaacscript-common")
 
 local CollectibleTypeCustom = {
-    TOMBSTONE = Isaac.GetItemIdByName("TombStone")
+    TOMBSTONE = Isaac.GetItemIdByName("Tombstone"),
 }
 
 local RevivalType = {
-    TOMBSTONE = 0 --was 0
+    TOMBSTONE = 0,
 }
 
---local tombstoneDamage = 0.1
-
---Sets mod to mod name, 1 is used for the API version, which will always be 1
 local modVanilla = RegisterMod("TombStone", 1)
 local mod = isc:upgradeMod(modVanilla)
 
---happens before reviving
 local function preCustomRevive(_, player)
   local hasTombstone = player:HasCollectible(CollectibleTypeCustom.TOMBSTONE)
   if hasTombstone then
     return RevivalType.TOMBSTONE
   end
-  return nil
+  return nil;
 end
 
---Happens after reviving
 local function postCustomRevive(_, player)
     player:AnimateCollectible(CollectibleTypeCustom.TOMBSTONE)
-    player:ChangePlayerType(isc.PlayerType.Magdalene)
+    player:ChangePlayerType(isc.PlayerType.MAGDALENE)
     player:RemoveCollectible(CollectibleTypeCustom.TOMBSTONE)
   end
 
